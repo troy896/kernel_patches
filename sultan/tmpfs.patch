@@ -1,0 +1,27 @@
+From b3341365a6eda93805dc31f4bc9744a55bc61701 Mon Sep 17 00:00:00 2001
+From: Cashiris <troy896@gmail.com>
+Date: Thu, 14 May 2026 07:05:32 -0500
+Subject: [PATCH] Enable TMPFS POSIX ACL, XATTR, and INODE64
+
+Enable TMPFS features for POSIX ACL, XATTR, and INODE64.
+---
+ arch/arm64/configs/gki-stock_defconfig | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/configs/gki-stock_defconfig b/arch/arm64/configs/gki-stock_defconfig
+index 9ba37726b27af..f434abdf94162 100644
+--- a/arch/arm64/configs/gki-stock_defconfig
++++ b/arch/arm64/configs/gki-stock_defconfig
+@@ -6530,9 +6530,9 @@ CONFIG_PROC_PAGE_MONITOR=y
+ CONFIG_KERNFS=y
+ CONFIG_SYSFS=y
+ CONFIG_TMPFS=y
+-# CONFIG_TMPFS_POSIX_ACL is not set
+-# CONFIG_TMPFS_XATTR is not set
+-# CONFIG_TMPFS_INODE64 is not set
++CONFIG_TMPFS_POSIX_ACL=y
++CONFIG_TMPFS_XATTR=y
++CONFIG_TMPFS_INODE64=y
+ CONFIG_ARCH_SUPPORTS_HUGETLBFS=y
+ # CONFIG_HUGETLBFS is not set
+ CONFIG_MEMFD_CREATE=y
