@@ -1,0 +1,24 @@
+From 62c3414b7f88adc03f6c89ae1a1f0156f8a2e7ed Mon Sep 17 00:00:00 2001
+From: troy896 <troy896@gmail.com>
+Date: Tue, 11 Aug 2026 09:35:39 -0500
+Subject: [PATCH] fix uninizialized
+
+---
+ runlist.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/runlist.c b/runlist.c
+index 2e8db63..d027334 100644
+--- a/runlist.c
++++ b/runlist.c
+@@ -766,6 +766,7 @@ struct runlist_element *ntfs_mapping_pairs_decompress(const struct ntfs_volume *
+ 	/* Start at vcn = lowest_vcn and lcn 0. */
+ 	vcn = lowest_vcn;
+ #else
++	vcn = le64_to_cpu(attr->data.non_resident.lowest_vcn);
+ 	/* Validate lowest_vcn from on-disk metadata to ensure it is sane. */
+ 	if (unlikely(vcn < 0)) {
+ 		ntfs_error(vol->sb, "Invalid lowest_vcn in mapping pairs.");
+-- 
+2.54.0
+
